@@ -124,6 +124,7 @@ h1 {
 .header_first-row, .header_second-row, .header_third-row {
     margin: 0 -10px;
     display: flex;
+    flex-flow: wrap;
     border-bottom: 1px solid var(--light-gray);
     border-left: 1px solid var(--light-gray);
     border-right: 1px solid var(--light-gray);
@@ -145,6 +146,7 @@ h1 {
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
+    color: var(--deep-blue);
     transition: color 0.3s;
 }
 .header_second-row__links > a svg{
@@ -189,6 +191,20 @@ h1 {
 .header_third-row nav ul li {
     display: flex;
     align-items: center;
+}
+.header_third-row nav ul li a{
+    padding: 2px;
+    font-family: Brygada1918, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--deep-blue);
+    transition: color 0.3s, border 0.3s;
+    border-bottom: 1px solid transparent;
+}
+.header_third-row nav ul li a:hover{
+    color: var(--main-color);
+    border-bottom: 1px solid var(--main-color);
 }
 /*.header_third-row nav ul li:after {*/
 /*    content: '';*/
@@ -277,17 +293,54 @@ span.hand_grey + span {
 .programs__item {
     margin-bottom: 10px;
     max-width: 400px;
+    position: relative;
     border-bottom: 2px solid var(--main-color);
+    overflow: hidden;
 }
 .programs_info {
     padding: 20px;
     background: white url("./img/bg_lines4_ochre.svg") right no-repeat;
 }
-.programs_info h3 {
+.programs_info h3, .programs_details h3 {
     font-size: 24px;
     color: var(--main-color);
 }
 .programs__info__prgm {
+    font-size: 14px;
+    color: #A8ADB4;
+}
+.programs_details {
+    padding: 16px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: translateY(100%);
+    transition: transform 0.3s;
+    background: white url(./img/bg_lines5_ochre.svg) right no-repeat;
+    background-size: contain;
+}
+.programs__item:hover .programs_details{
+    transform: translateY(0);
+}
+.programs__full, .programs__short {
+    margin-top: 10px;
+    padding: 18px;
+    background-color: #FAFAFA;
+    transition: background-color 0.3s, color 0.3s;
+}
+.programs__full:hover, .programs__short:hover {
+    background-color: var(--main-color);
+    color: white;
+}
+
+.programs__full__title {
+    margin-bottom: 6px;
+    font-size: 18px;
+    color: #A8ADB4;
+}
+.programs__full__text {
     font-size: 14px;
     color: #A8ADB4;
 }
@@ -297,15 +350,15 @@ span.hand_grey + span {
 }
 .teachers__slide {
     margin-right: 10px;
-    max-width: 290px;
+    position: relative;
+    /*max-width: 290px;*/
     height: 420px;
     overflow: hidden;
-    position: relative;
+    border-bottom: 2px solid var(--main-color);
 }
 .teachers__slide img {
-    max-width: 100%;
+    width: 100%;
     transition: transform 0.2s ease-in-out;
-
 }
 .photo-wrapper {
     max-height: 320px;
@@ -330,6 +383,7 @@ span.hand_grey + span {
     font-weight: 700;
     line-height: 1.3;
     color: var(--almost-black);
+    background-color: white;
 }
 .teachers__slide__info h3{
     font-size: 22px;
@@ -577,3 +631,62 @@ span.hand_grey + span {
 .modal {
     display: none;
 }
+
+.btn-burger {
+    margin: 16px auto 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    width: 28px;
+    height: 21px;
+    font-size: 0;
+    background-color: inherit;
+    border: none;
+    z-index: 20;
+}
+.btn-burger:focus {
+    outline: none;
+}
+.btn-burger:focus-visible {
+    outline: var(--deep-blue);
+}
+.btn-burger span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--deep-blue);
+    transition: all 0.3s;
+}
+.btn-burger span::before, .btn-burger span::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--deep-blue);
+    transition: all 0.3s;
+}
+.btn-burger span::before {
+    top: 0;
+}
+.btn-burger span::after {
+    bottom: 0;
+}
+.btn-burger.active span{
+    background-color: transparent;
+}
+.btn-burger.active span::before {
+    transform: rotate(45deg);
+    top: 9px;
+}
+.btn-burger.active span::after {
+    transform: rotate(-45deg);
+    bottom: 9px;
+}
+.header__hamburger {
+    display: none;
+}
+
